@@ -22,6 +22,7 @@ public class Utils {
     static final String JDK_PATH = DOT_VASSEMBLER_PATH+File.separator+JDK_VERSION;
     static final String JDK_TEMP_ZIP_PATH = getTempDir();
     static final String JDK_JAVA_PATH = JDK_PATH+File.separator+"jdk-18.0.1.1"+File.separator+"bin"+File.separator+"java";
+    static final String JDK_JAVA_PATH_OSX = JDK_PATH+File.separator+"jdk-18.0.1.1.jdk/Contents/Home"+""+File.separator+"bin"+File.separator+"java";
     static final String JDK_DOWNLOAD_MAIN_URL = "https://download.java.net/java/GA/jdk18.0.1.1/65ae32619e2f40f3a9af3af1851d6e19/2/GPL/"+JDK_VERSION+"_";
     static final String JAR_PATH = DOT_VASSEMBLER_PATH+File.separator+"Vassembler.jar";
 
@@ -149,6 +150,8 @@ public class Utils {
             javaLocation = JDK_JAVA_PATH;
             if (SystemUtils.IS_OS_WINDOWS)
                 javaLocation = javaLocation + ".exe";
+            else if(SystemUtils.IS_OS_MAC)
+                javaLocation = JDK_JAVA_PATH_OSX;
         }else
             javaLocation = "java";
         try {
